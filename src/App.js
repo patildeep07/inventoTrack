@@ -10,6 +10,8 @@ import { Sales } from "./pages/sales";
 export default function App() {
   const navigate = useNavigate();
 
+  document.title = "InventoTrack";
+
   return (
     <div className="App">
       <header>
