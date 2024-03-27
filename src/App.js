@@ -10,8 +10,6 @@ import { Sales } from "./pages/sales";
 export default function App() {
   const navigate = useNavigate();
 
-  const loading = useSelector((state) => state.loading);
-
   return (
     <div className="App">
       <header>
@@ -23,15 +21,11 @@ export default function App() {
         </nav>
       </header>
 
-      {loading && <h1>Loading...</h1>}
-
-      {!loading && (
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/inventory" element={<Inventory />} />
-          <Route path="/sales" element={<Sales />} />
-        </Routes>
-      )}
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/inventory" element={<Inventory />} />
+        <Route path="/sales" element={<Sales />} />
+      </Routes>
     </div>
   );
 }

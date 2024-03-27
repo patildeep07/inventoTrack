@@ -13,14 +13,14 @@ export const Card = ({ itemDetails }) => {
     quantity,
     price,
     category,
-    edit: false
+    edit: false,
   });
 
   const updateButtonHandler = () => {
     dispatch(
       updateItem({
         ...itemDetails,
-        edit: true
+        edit: true,
       })
     );
   };
@@ -33,23 +33,25 @@ export const Card = ({ itemDetails }) => {
     <div className="card-outline">
       {!edit && (
         <div>
-          <h3>Item name : {itemName}</h3>
+          <h3>Item: {itemName}</h3>
           <p>Quantity available: {quantity}</p>
           <p>Price: Rs. {price}</p>
           <p>Category: {category}</p>
 
-          <button
-            className="red-button"
-            onClick={() => dispatch(removeItem(_id))}
-          >
-            Remove
-          </button>
-          <button
-            className="green-button"
-            onClick={() => updateButtonHandler()}
-          >
-            Update
-          </button>
+          <div className="gap-10 ">
+            <button
+              className="red-button"
+              onClick={() => dispatch(removeItem(_id))}
+            >
+              Remove
+            </button>
+            <button
+              className="green-button"
+              onClick={() => updateButtonHandler()}
+            >
+              Update
+            </button>
+          </div>
         </div>
       )}
 
@@ -62,7 +64,7 @@ export const Card = ({ itemDetails }) => {
               onChange={(e) =>
                 setUpdateDetails({
                   ...updateDetails,
-                  itemName: e.target.value
+                  itemName: e.target.value,
                 })
               }
             />
@@ -76,7 +78,7 @@ export const Card = ({ itemDetails }) => {
               onChange={(e) =>
                 setUpdateDetails({
                   ...updateDetails,
-                  quantity: e.target.value
+                  quantity: e.target.value,
                 })
               }
             />
@@ -90,7 +92,7 @@ export const Card = ({ itemDetails }) => {
               onChange={(e) =>
                 setUpdateDetails({
                   ...updateDetails,
-                  price: e.target.value
+                  price: e.target.value,
                 })
               }
             />
@@ -103,7 +105,7 @@ export const Card = ({ itemDetails }) => {
               onChange={(e) =>
                 setUpdateDetails({
                   ...updateDetails,
-                  category: e.target.value
+                  category: e.target.value,
                 })
               }
             />

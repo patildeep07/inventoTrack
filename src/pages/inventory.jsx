@@ -13,7 +13,7 @@ export const Inventory = () => {
     quantity: 0,
     price: 0,
     category: "",
-    edit: false
+    edit: false,
   });
 
   const inventory = useSelector((state) => state.inventory);
@@ -32,7 +32,7 @@ export const Inventory = () => {
         quantity: 0,
         price: 0,
         category: "",
-        edit: false
+        edit: false,
       });
 
       setShowAddInventoryForm(false);
@@ -44,14 +44,14 @@ export const Inventory = () => {
   return (
     <div>
       <h1>Inventory</h1>
-      <div className="flex-row">
+      <div className="flex-row ">
         {inventory.map((item) => {
           return <Card key={item._id} itemDetails={item} />;
         })}
       </div>
 
       <button
-        className="green-button"
+        className="green-button margin-10"
         onClick={() => setShowAddInventoryForm(true)}
       >
         Click here to add a new item
@@ -68,7 +68,7 @@ export const Inventory = () => {
               onChange={(e) =>
                 setInventoryForm({
                   ...inventoryForm,
-                  itemName: e.target.value
+                  itemName: e.target.value,
                 })
               }
             />
@@ -84,7 +84,7 @@ export const Inventory = () => {
               onChange={(e) =>
                 setInventoryForm({
                   ...inventoryForm,
-                  quantity: Number(e.target.value)
+                  quantity: Number(e.target.value),
                 })
               }
             />
@@ -100,7 +100,7 @@ export const Inventory = () => {
               onChange={(e) =>
                 setInventoryForm({
                   ...inventoryForm,
-                  price: Number(e.target.value)
+                  price: Number(e.target.value),
                 })
               }
             />
@@ -114,7 +114,7 @@ export const Inventory = () => {
               onChange={(e) =>
                 setInventoryForm({
                   ...inventoryForm,
-                  category: e.target.value
+                  category: e.target.value,
                 })
               }
             />

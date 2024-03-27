@@ -11,6 +11,7 @@ export const setLoadingTrue = () => async (dispatch) => {
 
 export const getAllItems = () => async (dispatch) => {
   try {
+    dispatch({ type: "LOADING_TRUE" });
     const response = await axios.get(
       "https://neog-invento-track.onrender.com/api/items"
     );

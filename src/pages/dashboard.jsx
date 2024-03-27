@@ -5,6 +5,8 @@ import { getAllItems, getAllSales } from "../actions/actions";
 export const Dashboard = () => {
   const dispatch = useDispatch();
 
+  const loading = useSelector((state) => state.loading);
+
   // Inventory report
 
   const inventory = useSelector((state) => state.inventory);
@@ -37,17 +39,33 @@ export const Dashboard = () => {
             <th>Price</th>
           </tr>
         </thead>
-        <tbody>
-          {inventory.map(({ _id, itemName, quantity, price }) => {
-            return (
-              <tr key={_id}>
-                <th>{itemName}</th>
-                <th>{quantity}</th>
-                <th>{price}</th>
-              </tr>
-            );
-          })}
-        </tbody>
+        {loading ? (
+          <tbody>
+            <tr>
+              <th>
+                <div className="loader"></div>
+              </th>
+              <th>
+                <div className="loader"></div>
+              </th>
+              <th>
+                <div className="loader"></div>
+              </th>
+            </tr>
+          </tbody>
+        ) : (
+          <tbody>
+            {inventory.map(({ _id, itemName, quantity, price }) => {
+              return (
+                <tr key={_id}>
+                  <th>{itemName}</th>
+                  <th>{quantity}</th>
+                  <th>{price}</th>
+                </tr>
+              );
+            })}
+          </tbody>
+        )}
       </table>
 
       {/* Sales report */}
@@ -64,20 +82,42 @@ export const Dashboard = () => {
             <th>Total Amount</th>
           </tr>
         </thead>
-        <tbody>
-          {sales.map(({ _id, itemSold, quantity, price, date }) => {
-            const amount = price * quantity;
-            return (
-              <tr key={_id}>
-                <th>{date?.slice(0, 10)}</th>
-                <th>{itemSold}</th>
-                <th>{quantity}</th>
-                <th>Rs. {price}</th>
-                <th>Rs. {amount}</th>
-              </tr>
-            );
-          })}
-        </tbody>
+        {loading ? (
+          <tbody>
+            <tr>
+              <th>
+                <div className="loader"></div>
+              </th>
+              <th>
+                <div className="loader"></div>
+              </th>
+              <th>
+                <div className="loader"></div>
+              </th>
+              <th>
+                <div className="loader"></div>
+              </th>
+              <th>
+                <div className="loader"></div>
+              </th>
+            </tr>
+          </tbody>
+        ) : (
+          <tbody>
+            {sales.map(({ _id, itemSold, quantity, price, date }) => {
+              const amount = price * quantity;
+              return (
+                <tr key={_id}>
+                  <th>{date?.slice(0, 10)}</th>
+                  <th>{itemSold}</th>
+                  <th>{quantity}</th>
+                  <th>Rs. {price}</th>
+                  <th>Rs. {amount}</th>
+                </tr>
+              );
+            })}
+          </tbody>
+        )}
       </table>
     </div>
   );

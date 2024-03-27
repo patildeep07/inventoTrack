@@ -63,7 +63,8 @@ header h1 {
   width: 250px;
   padding: 10px 15px;
 
-  border: 1px solid;
+  border: 3px solid lightgray;
+  border-radius: 5px;
 
   margin: 10px 0;
 }
@@ -72,30 +73,50 @@ header h1 {
   border: none;
   padding: 5px 10px;
 
-  background-color: red;
-  color: white;
+  background-color: white;
+  color: red;
 
   cursor: pointer;
 
+  border: 3px solid red;
   border-radius: 5px;
 
   font-size: 16px;
   font-weight: 700;
+
+  transition: all 0.5s ease-in-out;
+}
+
+.red-button:hover {
+  background-color: red;
+  color: white;
 }
 
 .green-button {
   border: none;
   padding: 5px 10px;
 
-  background-color: green;
-  color: white;
+  background-color: white;
+  color: green;
 
   cursor: pointer;
 
+  border: 3px solid green;
   border-radius: 5px;
 
   font-size: 16px;
   font-weight: 700;
+
+  transition: all 0.5s ease-in-out;
+}
+
+.green-button:hover {
+  background-color: green;
+  color: white;
+}
+
+.margin-10 {
+  margin: 30px 0;
 }
 
 .edit-card {
@@ -160,6 +181,16 @@ th {
   border: 1px solid;
 }
 
+thead {
+  background-color: #25396b;
+  color: white;
+}
+
+th {
+  padding: 10px 0;
+  letter-spacing: 1px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -181,4 +212,43 @@ table {
   width: 80%;
 
   margin: 20px auto;
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+}
+
+.gap-10 {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Loader */
+
+.loader {
+  display: flex;
+  justify-content: center;
+
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #111b21;
+  border-radius: 50%;
+
+  margin: 10px auto;
+
+  width: 25px;
+  height: 25px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

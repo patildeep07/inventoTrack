@@ -2,15 +2,16 @@ const initialState = {
   inventory: [],
   sales: [],
   loading: false,
-  error: null
+  error: null,
 };
 
 export const Reducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOADING_TRUE":
+      console.log("Loading...");
       return {
         ...state,
-        loading: true
+        loading: true,
       };
 
     // Add item in inventory
@@ -20,30 +21,31 @@ export const Reducer = (state = initialState, action) => {
         ...state,
         inventory: [...state.inventory, action.payload],
         loading: false,
-        error: null
+        error: null,
       };
 
     case "ERROR_ADD_INVENTORY":
       return {
         ...state,
         error: "Failed to add items in inventory...",
-        loading: false
+        loading: false,
       };
 
     // Get inventory
 
     case "GET_INVENTORY_ITEMS":
+      console.log("Fetching data...");
       return {
         ...state,
         inventory: action.payload,
-        loading: false
+        loading: false,
       };
 
     case "ERROR_GET_INVENTORY":
       return {
         ...state,
         error: "Failed to get inventory data...",
-        loading: false
+        loading: false,
       };
 
     // Update inventory
@@ -59,14 +61,14 @@ export const Reducer = (state = initialState, action) => {
           }
         }),
         error: null,
-        loading: false
+        loading: false,
       };
 
     case "ERROR_UPDATE_INVENTORY":
       return {
         ...state,
         error: "Failed to update the item",
-        loading: false
+        loading: false,
       };
 
     // Delete inventory
@@ -74,14 +76,16 @@ export const Reducer = (state = initialState, action) => {
     case "DELETE_INVENTORY_ITEM":
       return {
         ...state,
-        inventory: state.inventory.filter((item) => item._id !== action.payload)
+        inventory: state.inventory.filter(
+          (item) => item._id !== action.payload
+        ),
       };
 
     case "ERROR_DELETE_ITEM":
       return {
         ...state,
         error: "Failed to delete item",
-        loading: false
+        loading: false,
       };
 
     // Update item
@@ -95,14 +99,14 @@ export const Reducer = (state = initialState, action) => {
           } else {
             return item;
           }
-        })
+        }),
       };
 
     case "ERROR_UPDATE_ITEM":
       return {
         ...state,
         error: "Failed to update item",
-        loading: false
+        loading: false,
       };
 
     // Get all sales item
@@ -111,14 +115,14 @@ export const Reducer = (state = initialState, action) => {
       return {
         ...state,
         sales: action.payload,
-        loading: false
+        loading: false,
       };
 
     case "ERROR_GET_SALES":
       return {
         ...state,
         error: "Failed to get sales data...",
-        loading: false
+        loading: false,
       };
 
     // Delete sales
@@ -128,14 +132,14 @@ export const Reducer = (state = initialState, action) => {
         ...state,
         sales: state.sales.filter((item) => item._id !== action.payload),
         loading: false,
-        error: null
+        error: null,
       };
 
     case "ERROR_DELETE_SALES":
       return {
         ...state,
         error: "Failed to delete data...",
-        loading: false
+        loading: false,
       };
 
     // Add sale
@@ -145,14 +149,14 @@ export const Reducer = (state = initialState, action) => {
         ...state,
         sales: [...state.sales, action.payload],
         loading: false,
-        error: null
+        error: null,
       };
 
     case "ERROR_ADD_SALES":
       return {
         ...state,
         error: "Failed to add items in sales...",
-        loading: false
+        loading: false,
       };
 
     default:
